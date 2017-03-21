@@ -1,0 +1,8 @@
+li{
+    text-decoration: none;
+}
+ul{
+    float:left;
+}
+
+/*css zapisujemy w static, w resources i dnosnik do tego w index.html zeby czytała z ztej sciezki*/

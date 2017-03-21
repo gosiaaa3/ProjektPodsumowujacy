@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link th:href="@{/css/mystyles.css}" href="../static/css/mystyles.css" rel="stylesheet" media="screen"/>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://blackrockdigital.github.io/startbootstrap-shop-homepage/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="https://blackrockdigital.github.io/startbootstrap-shop-homepage/css/shop-homepage.css" rel="stylesheet"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<form action="#" th:action="@{/product-form}" th:object="${product}" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="title">Title:</label>
+        <div class="col-sm-10">
+            <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="Title"/>
+            <!--samo title a nie product.title bo jestesmy juz w obiekcie-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="desc">Description:</label>
+        <div class="col-sm-10">
+            <textarea th:field="*{description}" class="form-control" id="desc" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="price">Price:</label>
+        <div class="col-sm-10">
+            <input type="text" th:field="*{price}" class="form-control" id="price" placeholder="Price"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="imageS">Small image:</label>
+        <div class="col-sm-10">
+            <input type="text" th:field="*{smallImage.link}" class="form-control" id="imageS" placeholder="Small image"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="imageSmall">Small image alt Text:</label>
+        <div class="col-sm-10">
+            <input type="text" th:field="*{smallImage.altText}" class="form-control" id="imageSmall" placeholder="Small image alt Text"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="imageB">Big image:</label>
+        <div class="col-sm-10">
+            <input type="text" th:field="*{bigImage.link}" class="form-control" id="imageB" placeholder="Big image"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="imageBig">Big image alt Text:</label>
+        <div class="col-sm-10">
+            <input type="text" th:field="*{bigImage.altText}" class="form-control" id="imageBig" placeholder="Big image alt Text"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="category">Select category:</label>
+        <div class="col-sm-10">
+            <select th:field="*{category}" class="form-control" id="category">
+                <option  th:each="cat : ${categories}" th:value="${#strings.toLowerCase(cat.name)}" th:text="${cat.name}"></option>
+            </select>
+            <input type="hidden" class="form-control" id="category-hidden" placeholder="Enter text" name="new-category"/>
+            <input type="button" class="btn btn-default" id="switch-category-fields" placeholder="Enter text" name="new-category"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+<!-- jQuery -->
+<script src="https://blackrockdigital.github.io/startbootstrap-shop-homepage/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://blackrockdigital.github.io/startbootstrap-shop-homepage/js/bootstrap.min.js"></script>
+<script th:src ="@{/js/myscript.js}"></script>
+</body>
+</html>
+
